@@ -20,6 +20,7 @@ export interface editUserForm {
 }
 
 export interface User {
+  id: number;
   firstName: string;
   lastName: string;
   nationalCode:number;

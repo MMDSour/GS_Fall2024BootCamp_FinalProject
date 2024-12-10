@@ -9,5 +9,8 @@ import {Component, Input} from '@angular/core';
 })
 
 export class TableComponent {
-
+  @Input()
+  headers: string[] = [];
+  @Input()
+  data: any[] = [];
 }
