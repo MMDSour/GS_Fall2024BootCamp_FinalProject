@@ -19,7 +19,6 @@ export interface editUserForm {
   isAdmin: FormControl <userRole>;
 }
 
-
 export interface User {
   firstName: string;
   lastName: string;
