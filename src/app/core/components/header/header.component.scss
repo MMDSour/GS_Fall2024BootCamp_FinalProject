@@ -1,0 +1,17 @@
+.header-container{
+  background: linear-gradient(to right, rgba(129, 189, 223, 0.66), rgba(37, 86, 131, 0.53));;
+  flex: 0 0 auto;
+  align-content: center;
+  height: 6vh;
+}
+
+.header{
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.header-content{
+  text-decoration: none;
+  color: black;
+}
