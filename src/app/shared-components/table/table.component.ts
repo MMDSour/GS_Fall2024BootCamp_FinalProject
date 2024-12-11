@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 
 @Component({
-  selector: 'table',
+  selector: 'table-component',
   imports: [],
   templateUrl: './table.component.html',
   standalone: true,

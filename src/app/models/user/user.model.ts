@@ -30,6 +30,16 @@ export interface User {
   isAdmin: userRole;
 }
 
+export const userHeaders :string[] = [
+  'id',
+  'firstName',
+  'lastName',
+  'nationalCode',
+  'phoneNumber',
+  'username',
+  'isAdmin',
+];
+
 export enum userRole {
   NORMAL = 0,
   ADMIN = 1
