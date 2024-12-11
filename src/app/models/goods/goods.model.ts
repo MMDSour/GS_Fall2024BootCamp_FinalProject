@@ -11,3 +11,9 @@ export interface Goods{
   name:string;
   weight:string;
 }
+
+export const goodsHeaders :string[] = [
+  'id',
+  'name',
+  'weight',
+];
