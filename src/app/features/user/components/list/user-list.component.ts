@@ -21,12 +21,18 @@ export class UserListComponent implements OnInit {
   ngOnInit() {
     this.userService.GetAllUsers().subscribe({
       next: data => {
-        this.users = data;
+        this.users = data.map(user => ({
+          ...user,               // Copy existing user properties
+          actions: ['Edit', 'Delete']        // Add the new field with default or custom values
+        }));
       },
       error: err => {
         console.error("error fetching users: ",err);
       }
     })
+  }
+  deleteUser = (user:User) => {
+    this.userService.DeleteUser(user);
   }
 
   protected readonly userHeaders = userHeaders;

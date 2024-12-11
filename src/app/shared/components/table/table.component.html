@@ -9,7 +9,32 @@
       @for (row of data; track row.id)
       {
         <tr class="row">
-          @for (header of headers; track header) { <td class="row-content">{{ row[header] }}</td> }
+          @for (header of headers; track header)
+          {
+            @if (header === 'actions')
+            {
+              <td class="row-content action" >
+                @for(action of row[header]; track action)
+                {
+                    @if(action === 'Delete'){
+                      <button type="button" class="action-btn" (click)="onDelete(row)">
+                        <img src="../../../../assets/trash-icon.svg" alt="trash" height="16" width="16">
+                      </button>
+                    } @else if (action === 'Edit'){
+                      <button type="button" class="action-btn">
+                        <img src="../../../../assets/edit-icon.svg" alt="trash" height="16" width="16">
+                      </button>
+                    }
+                }
+              </td>
+            }
+            @else
+            {
+              <td class="row-content">
+                {{ row[header] }}
+              </td>
+            }
+          }
         </tr>
       }
     </tbody>

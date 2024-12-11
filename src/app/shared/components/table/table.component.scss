@@ -26,3 +26,15 @@
 .row-content{
   border: 1px solid black;
 }
+
+.action{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.action-btn{
+  border: none  ;
+  background-color: rgba(67, 64, 64, 0);
+  align-self: center;
+}
+

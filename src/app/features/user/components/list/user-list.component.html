@@ -1,1 +1,1 @@
-<table-component [data]="users" [headers]="userHeaders" />
+<table-component [data]="users" [headers]="userHeaders" (deleteRow)="deleteUser($event)" />

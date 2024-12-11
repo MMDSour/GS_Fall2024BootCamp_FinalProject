@@ -38,6 +38,7 @@ export const userHeaders :string[] = [
   'phoneNumber',
   'username',
   'isAdmin',
+  'actions'
 ];
 
 export enum userRole {
