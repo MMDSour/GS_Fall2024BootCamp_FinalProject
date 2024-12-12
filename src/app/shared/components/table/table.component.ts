@@ -4,7 +4,6 @@ import {NgOptimizedImage} from '@angular/common';
 @Component({
   selector: 'table-component',
   imports: [
-    NgOptimizedImage
   ],
   templateUrl: './table.component.html',
   standalone: true,
