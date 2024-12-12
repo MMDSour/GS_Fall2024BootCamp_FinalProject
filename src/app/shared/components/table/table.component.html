@@ -28,6 +28,11 @@
                 }
               </td>
             }
+            @else if (header === 'isAdmin') {
+              <td class="row-content">
+                {{row[header] | yesNo}}
+              </td>
+            }
             @else
             {
               <td class="row-content">
