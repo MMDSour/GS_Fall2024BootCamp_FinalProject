@@ -1,8 +1,12 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {YesNoPipe} from '../../pipes/yes-no.pipe';
+import {NgOptimizedImage} from '@angular/common';
 
 @Component({
   selector: 'table-component',
   imports: [
+    YesNoPipe,
+    NgOptimizedImage
   ],
   templateUrl: './table.component.html',
   standalone: true,
