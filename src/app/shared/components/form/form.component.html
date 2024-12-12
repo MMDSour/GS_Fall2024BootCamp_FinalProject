@@ -1,4 +1,4 @@
-<form [formGroup]="formGroup" (ngSubmit)="formGroup.valid && onSubmit()">
+<form [formGroup]="formGroup" (ngSubmit)="formGroup.valid && onSubmit()" class="form-container">
   <div *ngFor="let field of template" class="text-input-group">
     <label [for]="field.key" class="input-label">{{ field.label }}</label>
 
