@@ -1,0 +1,48 @@
+<form [formGroup]="formGroup" (ngSubmit)="formGroup.valid && onSubmit()">
+  <div *ngFor="let field of template" class="text-input-group">
+    <label [for]="field.key" class="input-label">{{ field.label }}</label>
+
+    <ng-container [ngSwitch]="field.type">
+      <!-- Text and Number Inputs -->
+      <input
+        *ngSwitchCase="'text'"
+        [id]="field.key"
+        [type]="field.type"
+        [formControlName]="field.key"
+        class="text-input"
+        [placeholder]="field.label"
+      />
+      <input
+        *ngSwitchCase="'number'"
+        [id]="field.key"
+        [type]="field.type"
+        [formControlName]="field.key"
+        class="text-input"
+        [placeholder]="field.label"
+      />
+
+      <!-- Select Dropdown -->
+      <select
+        *ngSwitchCase="'select'"
+        [id]="field.key"
+        [formControlName]="field.key"
+        class="text-input"
+      >
+        <option *ngFor="let option of field.validations?.options" [value]="option.value">
+          {{ option.label }}
+        </option>
+      </select>
+    </ng-container>
+
+    <!-- Error Messages -->
+    <div *ngIf="getControl(field.key).dirty && getControl(field.key).invalid" class="error-message">
+      <span *ngIf="getControl(field.key).hasError('required')">این فیلد الزامی است</span>
+      <span *ngIf="getControl(field.key).hasError('minlength')">
+        حداقل طول {{ field.validations?.minlength }} کاراکتر است
+      </span>
+      <span *ngIf="getControl(field.key).hasError('pattern')">{{ field.validations?.errorMessage }}</span>
+    </div>
+  </div>
+
+  <button type="submit" class="form-btn" [disabled]="formGroup.invalid">ثبت</button>
+</form>

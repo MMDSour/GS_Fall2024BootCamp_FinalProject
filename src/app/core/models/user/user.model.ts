@@ -41,7 +41,24 @@ export const userHeaders :string[] = [
   'actions'
 ];
 
+export const userTemplate = [
+  { key: 'firstName', label: 'First Name', type: 'text',
+    validations: { required: true } },
+  { key: 'lastName', label: 'Last Name', type: 'text',
+    validations: { required: true } },
+  { key: 'nationalCode', label: 'National Code', type: 'text',
+    validations: { required: true, pattern: /^\d{10}$/, errorMessage: 'National Code is not valid' } },
+  { key: 'phoneNumber', label: 'Phone Number', type: 'text',
+    validations: { required: true, pattern: /^09\d{9}$/, errorMessage: 'Phone number is not valid' } },
+  { key: 'username', label: 'Username', type: 'text',
+    validations: { required: true } },
+  { key: 'password', label: 'Password', type: 'text',
+    validations: { required: true, minlength: 6 } },
+  { key: 'isAdmin', label: 'Role', type: 'select',
+    validations: { required: true, options: [ { label: 'User', value: 'user' }, { label: 'Admin', value: 'admin' } ] } },
+];
+
 export enum userRole {
-  NORMAL = 0,
+  USER = 0,
   ADMIN = 1
 }

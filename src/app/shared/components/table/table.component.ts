@@ -1,6 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {NgOptimizedImage} from '@angular/common';
-import {HttpResponse} from '@angular/common/http';
 
 @Component({
   selector: 'table-component',
