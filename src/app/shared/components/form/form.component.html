@@ -36,13 +36,13 @@
 
     <!-- Error Messages -->
     <div *ngIf="getControl(field.key).dirty && getControl(field.key).invalid" class="error-message">
-      <span *ngIf="getControl(field.key).hasError('required')">این فیلد الزامی است</span>
+      <span *ngIf="getControl(field.key).hasError('required')">This field is required</span>
       <span *ngIf="getControl(field.key).hasError('minlength')">
-        حداقل طول {{ field.validations?.minlength }} کاراکتر است
+        the minimum length of this field is: {{ field.validations?.minlength }} !
       </span>
       <span *ngIf="getControl(field.key).hasError('pattern')">{{ field.validations?.errorMessage }}</span>
     </div>
   </div>
 
-  <button type="submit" class="form-btn" [disabled]="formGroup.invalid">ثبت</button>
+  <button type="submit" class="form-btn" [disabled]="formGroup.invalid">Submit</button>
 </form>

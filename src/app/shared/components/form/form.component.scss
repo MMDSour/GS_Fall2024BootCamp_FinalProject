@@ -75,7 +75,12 @@ select.text-input {
   background-color: #555;
 }
 
+.form-btn:disabled{
+    background-color: rgba(117, 112, 112, 0.82);
+    color: #424141;
+    cursor: not-allowed;
+}
+
 .error-message{
   margin-top: 5px;
 }
-
