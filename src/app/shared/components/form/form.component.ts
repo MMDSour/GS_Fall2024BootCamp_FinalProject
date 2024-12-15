@@ -1,9 +1,10 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
+import {RouterLink} from '@angular/router';
 @Component({
   selector: 'form-components',
-  imports: [CommonModule, ReactiveFormsModule ],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink],
   standalone: true,
   templateUrl: './form.component.html',
   styleUrl: './form.component.scss'
@@ -11,6 +12,8 @@ import {CommonModule} from '@angular/common';
 export class FormComponent {
   @Input() formGroup!: FormGroup;
   @Input() template!: Array<{ key: string; label: string; type: string; validations?: any }>;
+  @Input() navigation?: string = '';
+  @Output() submit :EventEmitter<any> = new EventEmitter();
 
   ngOnInit(): void {
     if (!this.formGroup || !this.template) {
@@ -22,7 +25,8 @@ export class FormComponent {
     return this.formGroup.get(key) as FormControl;
   }
 
-  onSubmit = () => {
-    console.log('Form Submitted:', this.formGroup.value);
+  onSubmit = (event: Event) => {
+    event.preventDefault();
+    this.submit.emit(this.formGroup.value);
   }
 }

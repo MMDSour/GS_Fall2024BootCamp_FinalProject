@@ -1,48 +1,60 @@
-<form [formGroup]="formGroup" (ngSubmit)="formGroup.valid && onSubmit()" class="form-container">
-  <div *ngFor="let field of template" class="text-input-group">
+<form [formGroup]="formGroup" class="form-container">
+  @for(field of template; track template){
+  <div class="text-input-group">
     <label [for]="field.key" class="input-label">{{ field.label }}</label>
+    @switch (field.type){
+      @case ('text'){
+        <input
+          [id]="field.key"
+          [type]="field.type"
+          [formControlName]="field.key"
+          class="text-input"
+          [placeholder]="field.label"
+        />
+      }
+      @case ('number'){
+        <input
+          [id]="field.key"
+          [type]="field.type"
+          [formControlName]="field.key"
+          class="text-input"
+          [placeholder]="field.label"
+        />
+      }
 
-    <ng-container [ngSwitch]="field.type">
-      <!-- Text and Number Inputs -->
-      <input
-        *ngSwitchCase="'text'"
-        [id]="field.key"
-        [type]="field.type"
-        [formControlName]="field.key"
-        class="text-input"
-        [placeholder]="field.label"
-      />
-      <input
-        *ngSwitchCase="'number'"
-        [id]="field.key"
-        [type]="field.type"
-        [formControlName]="field.key"
-        class="text-input"
-        [placeholder]="field.label"
-      />
-
-      <!-- Select Dropdown -->
-      <select
-        *ngSwitchCase="'select'"
-        [id]="field.key"
-        [formControlName]="field.key"
-        class="text-input"
-      >
-        <option *ngFor="let option of field.validations?.options" [value]="option.value">
-          {{ option.label }}
-        </option>
-      </select>
-    </ng-container>
-
-    <!-- Error Messages -->
-    <div *ngIf="getControl(field.key).dirty && getControl(field.key).invalid" class="error-message">
-      <span *ngIf="getControl(field.key).hasError('required')">This field is required</span>
-      <span *ngIf="getControl(field.key).hasError('minlength')">
-        the minimum length of this field is: {{ field.validations?.minlength }} !
-      </span>
-      <span *ngIf="getControl(field.key).hasError('pattern')">{{ field.validations?.errorMessage }}</span>
-    </div>
+      @case ('select'){
+        <select
+          [id]="field.key"
+          [formControlName]="field.key"
+          class="text-input"
+        >
+          @for(option of field.validations?.options; track option){
+            <option [value]="option.value">
+              {{ option.label }}
+            </option>
+          }
+        </select>
+      }
+    }
+    @if(getControl(field.key).dirty && getControl(field.key).invalid){
+      <div class="error-message">
+        @if(getControl(field.key).hasError('required')){
+          <span>This field is required</span>
+        }
+        @if(getControl(field.key).hasError('minlength')){
+          <span>
+            the minimum length of this field is: {{ field.validations?.minlength }} !
+          </span>
+        }
+        @if(getControl(field.key).hasError('pattern')){
+         <span>{{ field.validations?.errorMessage }}</span>
+        }
+      </div>
+    }
   </div>
-
-  <button type="submit" class="form-btn" [disabled]="formGroup.invalid">Submit</button>
+  }
+  <button type="submit" class="form-btn" [disabled]="formGroup.invalid" [routerLink] = [this.navigation]
+          (click)="formGroup.valid && onSubmit($event)">
+    Submit
+  </button>
 </form>
