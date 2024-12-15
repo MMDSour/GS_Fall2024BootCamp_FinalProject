@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {FormComponent} from '../../../../shared/components/form/form.component';
-import {userTemplate} from '../../../../core/models/user/user.model';
+import {userRole, userTemplate} from '../../../../core/models/user/user.model';
+import {UserService} from '../../user.service';
 
 @Component({
   selector: 'add',
@@ -17,7 +18,7 @@ export class AddUserComponent {
   form!: FormGroup;
 
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, public userService: UserService) {
     this.form = this.fb.group({});
     userTemplate.forEach((field) => {
       const controlValidators = [];
@@ -26,6 +27,16 @@ export class AddUserComponent {
       if (field.validations?.pattern) controlValidators.push(Validators.pattern(field.validations.pattern));
       this.form.addControl(field.key, this.fb.control('', controlValidators));
     });
+  }
+
+  addUser = (e: any) => {
+    if (e.isAdmin === 'user')
+      e.isAdmin = userRole.USER;
+    else if (e.isAdmin === 'admin')
+      e.isAdmin = userRole.ADMIN;
+    else
+      return;
+    this.userService.AddUser(e);
   }
 
   protected readonly userTemplate = userTemplate;
