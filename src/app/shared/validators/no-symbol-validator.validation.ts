@@ -1,7 +1,7 @@
 import {AbstractControl, ValidationErrors} from '@angular/forms';
 
-export const noAtSymbolValidator = () => {
+export const noSymbolValidator = () => {
   return (control: AbstractControl): ValidationErrors | null => {
-    return !control.value.includes('@') ? null : {atSymbol: 'you can not use @ in '};
+    return !/[^a-zA-Z0-9]/.test(control.value) ? null : {symbol: 'you can not use symbols in '};
   }
 }
