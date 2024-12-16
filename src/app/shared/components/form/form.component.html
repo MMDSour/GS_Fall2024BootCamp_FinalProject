@@ -1,5 +1,5 @@
 <form [formGroup]="formGroup" class="form-container">
-  @for(field of template; track template){
+  @for(field of template; track field){
   <div class="text-input-group">
     <label [for]="field.key" class="input-label">{{ field.label }}</label>
     @switch (field.type){
