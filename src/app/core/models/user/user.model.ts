@@ -27,7 +27,7 @@ export interface User {
   phoneNumber: number;
   username: string;
   password: string;
-  isAdmin: userRole;
+  role: userRole;
 }
 
 export const userHeaders :string[] = [
@@ -37,7 +37,7 @@ export const userHeaders :string[] = [
   'nationalCode',
   'phoneNumber',
   'username',
-  'isAdmin',
+  'role',
   'actions'
 ];
 
@@ -54,7 +54,7 @@ export const userAddFormTemplate: any[] = [
     validations: { required: true , noSymbol: true, noWhitespace: true} },
   { key: 'password', label: 'Password', type: 'text',
     validations: { required: true, minlength: 6 , noWhitespace: true} },
-  { key: 'isAdmin', label: 'Role', type: 'select',
+  { key: 'role', label: 'Role', type: 'select',
     validations: { required: true, noWhitespace: true, options: [ { label: 'User', value: 'user' }, { label: 'Admin', value: 'admin' } ] } },
 ];
 

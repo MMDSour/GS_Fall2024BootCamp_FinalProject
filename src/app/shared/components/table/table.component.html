@@ -28,9 +28,9 @@
                 }
               </td>
             }
-            @else if (header === 'isAdmin') {
+            @else if (header === 'role') {
               <td class="row-content">
-                {{row[header] | yesNo}}
+                {{row[header] | userAdmin}}
               </td>
             }
             @else

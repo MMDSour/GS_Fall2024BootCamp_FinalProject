@@ -17,10 +17,11 @@ export class AddUserComponent {
   constructor(public userService: UserService) {}
 
   addUser = (e: any) => {
-    if (e.isAdmin === 'user')
-      e.isAdmin = userRole.USER;
-    else if (e.isAdmin === 'admin')
-      e.isAdmin = userRole.ADMIN;
+    console.log(e);
+    if (e.role === 'user')
+      e.role = userRole.USER;
+    else if (e.role === 'admin')
+      e.role = userRole.ADMIN;
     else
       return;
     this.userService.AddUser(e);

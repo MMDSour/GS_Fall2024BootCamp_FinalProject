@@ -20,17 +20,23 @@ export class UserListComponent implements OnInit {
   constructor(private router: Router, private userService: UserService) {}
   ngOnInit() {
     this.userService.GetAllUsers().subscribe({
-      next: data => {
-        this.users = data.map(user => ({
-          ...user,               // Copy existing user properties
-          actions: ['Edit', 'Delete']        // Add the new field with default or custom values
-        }));
+      next: (response) => {
+        this.users = this.userService.mapResponseToUsers(response);
+        this.addActions();
       },
-      error: err => {
-        console.error("error fetching users: ",err);
+      error: (err) => {
+        console.error("Error fetching users:", err);
+        return [];
       }
-    })
+    });
   }
+  addActions = () => {
+    this.users = this.users.map(user => ({
+      ...user,
+      actions:['Edit', 'Delete']
+    }));
+  }
+
   deleteUser = (user:User) => {
     // this.userService.DeleteUser(user);
   }

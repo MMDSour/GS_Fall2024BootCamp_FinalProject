@@ -2,14 +2,14 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   standalone: true,
-  name: 'yesNo'
+  name: 'userAdmin'
 })
-export class YesNoPipe implements PipeTransform {
-  transform(value: number): string {
+export class UserAdminPipe implements PipeTransform {
+  transform(value: number | string): string {
     if (value === 1) {
-      return 'Yes';
+      return 'admin';
     } else if (value === 0) {
-      return 'No';
+      return 'user';
     } else {
       return 'Invalid';
     }
