@@ -41,21 +41,21 @@ export const userHeaders :string[] = [
   'actions'
 ];
 
-export const userTemplate = [
+export const userFormTemplate = [
   { key: 'firstName', label: 'First Name', type: 'text',
-    validations: { required: true } },
+    validations: { required: true, noWhitespace: true } },
   { key: 'lastName', label: 'Last Name', type: 'text',
-    validations: { required: true } },
-  { key: 'nationalCode', label: 'National Code', type: 'text',
-    validations: { required: true, pattern: /^\d{10}$/, errorMessage: 'National Code is not valid' } },
-  { key: 'phoneNumber', label: 'Phone Number', type: 'text',
-    validations: { required: true, pattern: /^09\d{9}$/, errorMessage: 'Phone number is not valid' } },
+    validations: { required: true , noWhitespace: true} },
+  { key: 'nationalCode', label: 'National Code', type: 'number',
+    validations: { required: true, exactLength: 10, noWhitespace: true, errorMessage: 'National Code is not valid' } },
+  { key: 'phoneNumber', label: 'Phone Number', type: 'number',
+    validations: { required: true, phoneNumber: true, noWhitespace: true, errorMessage: 'Phone number is not valid' } },
   { key: 'username', label: 'Username', type: 'text',
-    validations: { required: true } },
+    validations: { required: true , noAtSymbol: true, noWhitespace: true} },
   { key: 'password', label: 'Password', type: 'text',
-    validations: { required: true, minlength: 6 } },
+    validations: { required: true, minlength: 6 , noWhitespace: true} },
   { key: 'isAdmin', label: 'Role', type: 'select',
-    validations: { required: true, options: [ { label: 'User', value: 'user' }, { label: 'Admin', value: 'admin' } ] } },
+    validations: { required: true, noWhitespace: true, options: [ { label: 'User', value: 'user' }, { label: 'Admin', value: 'admin' } ] } },
 ];
 
 export enum userRole {

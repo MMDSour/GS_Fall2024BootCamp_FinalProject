@@ -41,13 +41,25 @@
         @if(getControl(field.key).hasError('required')){
           <span>This field is required</span>
         }
-        @if(getControl(field.key).hasError('minlength')){
+        @else if(getControl(field.key).hasError('minlength')){
           <span>
             the minimum length of this field is: {{ field.validations?.minlength }} !
           </span>
         }
-        @if(getControl(field.key).hasError('pattern')){
+        @else if(getControl(field.key).hasError('pattern')){
          <span>{{ field.validations?.errorMessage }}</span>
+        }
+        @else if(getControl(field.key)?.hasError('phoneNumber')){
+          <span>{{ field.validations?.errorMessage }}</span>
+        }
+        @else if(getControl(field.key)?.hasError('exactLength')){
+          <span>{{ field.validations?.errorMessage }}</span>
+        }
+        @else if (getControl(field.key)?.hasError('atSymbol')){
+          <span>{{ getControl(field.key).errors?.['atSymbol'] + field.key }}</span>
+        }
+        @else if (getControl(field.key)?.hasError('noWhiteSpace')){
+          <span>{{ getControl(field.key).errors?.['noWhiteSpace'] }}</span>
         }
       </div>
     }

@@ -32,7 +32,7 @@ export class UserListComponent implements OnInit {
     })
   }
   deleteUser = (user:User) => {
-    this.userService.DeleteUser(user);
+    // this.userService.DeleteUser(user);
   }
 
   protected readonly userHeaders = userHeaders;

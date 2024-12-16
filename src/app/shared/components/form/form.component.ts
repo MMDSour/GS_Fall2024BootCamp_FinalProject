@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {RouterLink} from '@angular/router';
+import {addUserForm, userFormTemplate} from '../../../core/models/user/user.model';
 @Component({
   selector: 'form-components',
   imports: [CommonModule, ReactiveFormsModule, RouterLink],
@@ -22,6 +23,7 @@ export class FormComponent {
   }
 
   public getControl(key: string): FormControl {
+
     return this.formGroup.get(key) as FormControl;
   }
 
