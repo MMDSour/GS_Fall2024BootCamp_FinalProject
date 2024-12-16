@@ -28,4 +28,5 @@ export class AddUserComponent {
   }
 
   protected readonly userTemplate = userAddFormTemplate;
+  protected readonly localStorage = localStorage;
 }
