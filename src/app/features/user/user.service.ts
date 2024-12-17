@@ -24,13 +24,13 @@ export class UserService {
   EditUser = (user: User) => {
     const body = {
       id: this.userData.id,
-      firstName: user.firstName,
-      lastName: user.lastName,
-      nationalCode: user.nationalCode,
-      phoneNumber: user.phoneNumber,
+      firstName: user.firstName || this.userData.firstName,
+      lastName: user.lastName || this.userData.lastName,
+      nationalCode: user.nationalCode || this.userData.nationalCode,
+      phoneNumber: user.phoneNumber || this.userData.phoneNumber,
       username: this.userData.username,
-      password: user.password,
-      role: user.role,
+      password: user.password || this.userData.password,
+      role: user.role || this.userData.role,
     }
     const token = localStorage.getItem('authToken');
     return this.http.put("http://localhost:3000/api/users", body,
