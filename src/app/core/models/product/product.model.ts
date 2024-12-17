@@ -18,4 +18,5 @@ export const productHeaders :string[] = [
   'code',
   'name',
   'weight',
+  'actions',
 ];
