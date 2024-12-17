@@ -1,6 +1,1 @@
-@if (localStorage.getItem('role') === '1'){
 <form-components [template]="userTemplate" (submit)="addUser($event)" [navigation]="'/user/list'"/>
-}
-@else {
-  <div>mamanat ra meil kardam</div>
-}
