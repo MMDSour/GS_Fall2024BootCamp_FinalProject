@@ -33,7 +33,7 @@ export class UserService {
       role: user.role || this.userData.role,
     }
     const token = localStorage.getItem('authToken');
-    return this.http.put("http://localhost:3000/api/users", body,
+    return this.http.put(`${environment.apiBaseUrl}users`, body,
       { headers: {authorization: token!},responseType: "text" })
       .subscribe({
         error: (err) => {
@@ -44,13 +44,13 @@ export class UserService {
 
   GetAllUsers = (): Observable<any>  => {
     const token = localStorage.getItem('authToken');
-    return this.http.get("http://localhost:3000/api/users",
+    return this.http.get(`${environment.apiBaseUrl}users`,
       { headers: { authorization: token! }, responseType: "json" })
   }
 
   GetCurrentUser = (): Observable<any>  => {
     const token = localStorage.getItem('authToken');
-    return this.http.get("http://localhost:3000/api/users/current",
+    return this.http.get(`${environment.apiBaseUrl}users/current`,
       { headers: { authorization: token! }, responseType: "json" })
   }
 
@@ -62,7 +62,7 @@ export class UserService {
 
   AddUser = (user: User) => {
     const token = localStorage.getItem('authToken');
-    return this.http.post("http://localhost:3000/api/users", user, { headers: {authorization: token!}, responseType: "text" })
+    return this.http.post(`${environment.apiBaseUrl}users`, user, { headers: {authorization: token!}, responseType: "text" })
       .subscribe({
         error: (err) => {
           console.error("Error adding user:", err);
