@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {User, userEditFormTemplate, userRole} from '../../../../core/models/user/user.model';
+import {userEditFormTemplate, userRole} from '../../../../core/models/user/user.model';
 import {FormComponent} from '../../../../shared/components/form/form.component';
 import {UserService} from '../../user.service';
 
@@ -16,7 +16,6 @@ export class EditUserComponent{
 
   editTemplate = userEditFormTemplate;
 
-  user: any;
   constructor(private userService: UserService) {}
 
   editUser = (e: any) => {
