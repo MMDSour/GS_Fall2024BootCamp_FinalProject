@@ -15,13 +15,15 @@ import {ProductService} from '../../product.service';
 export class ProductListComponent  implements OnInit {
   constructor(public productService: ProductService) {}
 
+  role : boolean = localStorage.getItem('role') === '1';
   products: Product[] =[];
 
   ngOnInit() {
     this.productService.GetAllProducts().subscribe({
       next: (response) => {
         this.products = this.productService.mapResponseToProducts(response);
-        this.addActions();
+        if(this.role)
+          this.addActions();
       },
       error: (err) => {
         console.error("Error fetching users:", err);

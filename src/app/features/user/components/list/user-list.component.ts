@@ -16,13 +16,15 @@ import {TableComponent} from '../../../../shared/components/table/table.componen
 export class UserListComponent implements OnInit {
 
   users: User[] = [];
+  role: boolean = localStorage.getItem('role') === '1'
 
   constructor(private router: Router, public userService: UserService) {}
   ngOnInit() {
     this.userService.GetAllUsers().subscribe({
       next: (response) => {
         this.users = this.userService.mapResponseToUsers(response);
-        this.addActions();
+        if(this.role)
+          this.addActions();
       },
       error: (err) => {
         console.error("Error fetching users:", err);
