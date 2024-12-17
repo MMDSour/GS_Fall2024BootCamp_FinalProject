@@ -1,7 +1,7 @@
 export interface Product{
   code:number;
   name:string;
-  weight:string;
+  weight:number;
 }
 
 export const productAddFormTemplate: any[] = [
@@ -14,6 +14,7 @@ export const productAddFormTemplate: any[] = [
 ];
 
 export const productHeaders :string[] = [
+  'id',
   'code',
   'name',
   'weight',

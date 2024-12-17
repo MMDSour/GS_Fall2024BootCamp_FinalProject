@@ -61,6 +61,9 @@
         @else if (getControl(field.key).hasError('noWhiteSpace')){
           <span>{{ getControl(field.key).errors?.['noWhiteSpace'] }}</span>
         }
+        @else if (getControl(field.key).hasError('positiveNumber')){
+          <span>{{ getControl(field.key).errors?.['positiveNumber'] }}</span>
+        }
       </div>
     }
   </div>

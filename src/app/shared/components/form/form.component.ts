@@ -6,6 +6,7 @@ import { PhoneNumberValidator } from '../../validators/phone-number-validator.va
 import { numberLengthValidator } from '../../validators/number-length-validator.validation';
 import {noSymbolValidator} from '../../validators/no-symbol-validator.validation';
 import { noWhitespaceValidator } from '../../validators/no-whitespace-validator.validation';
+import {positiveNumberValidator} from '../../validators/positive-number-validator.validation';
 
 @Component({
   selector: 'form-components',
@@ -39,6 +40,7 @@ export class FormComponent {
       if (field.validations?.exactLength) controlValidators.push(numberLengthValidator(field.validations.exactLength));
       if (field.validations?.noSymbol) controlValidators.push(noSymbolValidator());
       if (field.validations?.noWhitespace) controlValidators.push(noWhitespaceValidator());
+      if (field.validations?.positiveNumber) controlValidators.push(positiveNumberValidator());
       this.formGroup.addControl(field.key, this.fb.control('', controlValidators));
     });
   }

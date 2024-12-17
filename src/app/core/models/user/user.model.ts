@@ -3,7 +3,7 @@ export interface User {
   firstName: string;
   lastName: string;
   nationalCode:number;
-  phoneNumber: number;
+  phoneNumber: string;
   username: string;
   password: string;
   role: userRole;

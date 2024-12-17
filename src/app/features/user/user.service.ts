@@ -73,10 +73,10 @@ export class UserService {
   mapResponseToUsers(response: any): User[] {
     return Object.entries(response).map(([id, user]: [string, any]) => {
       return {
-        id: Number(id),
+        id: +id,
         firstName: user.firstName || '',
         lastName: user.lastName || '',
-        nationalCode: user.nationalCode || 0,
+        nationalCode: +user.nationalCode || 0,
         phoneNumber: user.phoneNumber || 0,
         username: user.username || '',
         password: user.password || '',

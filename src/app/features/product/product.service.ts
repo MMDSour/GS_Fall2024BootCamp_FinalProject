@@ -11,12 +11,18 @@ export class ProductService {
 
   private productData: any;
 
-  setUserData = (data: Product) => {
+  setProductData = (data: Product) => {
     this.productData = data;
   }
 
-  getUserData = () => {
+  getProductData = () => {
     return this.productData;
+  }
+
+  GetAllProducts = () => {
+    const token = localStorage.getItem('authToken');
+    return this.http.get("http://localhost:3000/api/products",
+      { headers: { authorization: token! }, responseType: "json" })
   }
 
   AddProduct = (product: Product) => {
@@ -31,4 +37,17 @@ export class ProductService {
         }
       });
   }
+
+  mapResponseToProducts(response: any): Product[] {
+    return Object.entries(response).map(([id, product]: [string, any]) => {
+      return {
+        id: +id,
+        code: product.code || '',
+        name: product.name || '',
+        weight: +product.weight || 0,
+      };
+    });
+  }
+
+
 }
