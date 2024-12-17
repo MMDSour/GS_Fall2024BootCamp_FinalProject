@@ -4,7 +4,7 @@ export interface Product{
   weight:number;
 }
 
-export const productAddFormTemplate: any[] = [
+export const productFormTemplate: any[] = [
   { key: 'code', label: 'product Code', type: 'text',
     validations: { required: true, noWhitespace: true , noSymbol: true}, },
   { key: 'name', label: 'Product Name', type: 'text',

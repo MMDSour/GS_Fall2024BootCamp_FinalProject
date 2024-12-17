@@ -25,6 +25,23 @@ export class ProductService {
       { headers: { authorization: token! }, responseType: "json" })
   }
 
+  EditProduct = (product: Product) => {
+    const body = {
+      id: this.productData.id,
+      code: product.code || this.productData.code,
+      name: product.name || this.productData.name,
+      weight: product.weight || this.productData.weight,
+    }
+    const token = localStorage.getItem('authToken');
+    return this.http.put("http://localhost:3000/api/products", body,
+      { headers: {authorization: token!},responseType: "text" })
+      .subscribe({
+        error: (err) => {
+          console.error("Error editing user:", err);
+        }
+      });
+  }
+
   AddProduct = (product: Product) => {
     const token = localStorage.getItem('authToken');
     return this.http.post("http://localhost:3000/api/products", product, { headers: {authorization: token!}, responseType: "json" })

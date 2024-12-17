@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {ProductService} from '../../product.service';
-import {productAddFormTemplate} from '../../../../core/models/product/product.model';
+import {productFormTemplate} from '../../../../core/models/product/product.model';
 import {FormComponent} from '../../../../shared/components/form/form.component';
 
 @Component({
@@ -13,7 +13,7 @@ import {FormComponent} from '../../../../shared/components/form/form.component';
   styleUrl: './add-product.component.scss'
 })
 export class AddProductComponent {
-  protected readonly productTemplate = productAddFormTemplate;
+  protected readonly productTemplate = productFormTemplate;
 
   constructor(private productService: ProductService) {}
 
