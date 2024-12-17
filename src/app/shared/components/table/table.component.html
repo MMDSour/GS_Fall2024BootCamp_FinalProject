@@ -21,7 +21,7 @@
                         <img ngSrc="../../../../assets/trash-icon.svg" alt="trash" height="16" width="16">
                       </button>
                     } @else if (action === 'Edit'){
-                      <button type="button" class="action-btn">
+                      <button type="button" class="action-btn" (click)="onEdit(row)" [routerLink]="[editNav, row.id]">
                         <img ngSrc="../../../../assets/edit-icon.svg" alt="trash" height="16" width="16">
                       </button>
                     }

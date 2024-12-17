@@ -1,24 +1,3 @@
-import {FormControl} from '@angular/forms';
-
-export interface addUserForm {
-  firstName: FormControl <string>;
-  lastName: FormControl <string>;
-  nationalCode: FormControl <number>;
-  phoneNumber: FormControl <number>;
-  username: FormControl <string>;
-  password: FormControl <string>;
-  isAdmin: FormControl <userRole>;
-}
-
-export interface editUserForm {
-  firstName: FormControl <string>;
-  lastName: FormControl <string>;
-  nationalCode: FormControl <number>;
-  phoneNumber: FormControl <number>;
-  password: FormControl <string>;
-  isAdmin: FormControl <userRole>;
-}
-
 export interface User {
   id: number;
   firstName: string;
@@ -48,7 +27,7 @@ export const userAddFormTemplate: any[] = [
     validations: { required: true , noWhitespace: true, noSymbol: true}, },
   { key: 'nationalCode', label: 'National Code', type: 'number',
     validations: { required: true, exactLength: 10, noWhitespace: true, errorMessage: 'National Code is not valid' } },
-  { key: 'phoneNumber', label: 'Phone Number', type: 'number',
+  { key: 'phoneNumber', label: 'Phone Number', type: 'text',
     validations: { required: true, phoneNumber: true, noWhitespace: true, errorMessage: 'Phone number is not valid' } },
   { key: 'username', label: 'Username', type: 'text',
     validations: { required: true , noSymbol: true, noWhitespace: true} },
@@ -57,6 +36,22 @@ export const userAddFormTemplate: any[] = [
   { key: 'role', label: 'Role', type: 'select',
     validations: { required: true, noWhitespace: true, options: [ { label: 'User', value: 'user' }, { label: 'Admin', value: 'admin' } ] } },
 ];
+
+export const userEditFormTemplate = [
+  { key: 'firstName', label: 'First Name', type: 'text', value:'',
+    validations: { required: true, noWhitespace: true , noSymbol: true}, },
+  { key: 'lastName', label: 'Last Name', type: 'text', value:'',
+    validations: { required: true , noWhitespace: true, noSymbol: true}, },
+  { key: 'nationalCode', label: 'National Code', type: 'number', value:'',
+    validations: { required: true, exactLength: 10, noWhitespace: true, errorMessage: 'National Code is not valid' } },
+  { key: 'phoneNumber', label: 'Phone Number', type: 'text', value:'',
+    validations: { required: true, phoneNumber: true, noWhitespace: true, errorMessage: 'Phone number is not valid' } },
+  { key: 'password', label: 'Password', type: 'text', value:'',
+    validations: { required: true, minlength: 6 , noWhitespace: true} },
+  { key: 'role', label: 'Role', type: 'select', value:'',
+    validations: { required: true, noWhitespace: true, options: [ { label: 'User', value: 'user' }, { label: 'Admin', value: 'admin' } ] } },
+];
+
 
 export const userLoginFormTemplate = [
   { key: 'username', label: 'Username', type: 'text',

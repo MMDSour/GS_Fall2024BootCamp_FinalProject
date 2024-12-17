@@ -1,1 +1,3 @@
-<table-component [data]="users" [headers]="userHeaders" (deleteRow)="deleteUser($event)" />
+<table-component [data]="users" [headers]="userHeaders"
+                 (deleteRow)="deleteUser($event)"
+                 [editNav]="'/user/edit/'" (saveRow)="this.userService.setUserData($event)"/>

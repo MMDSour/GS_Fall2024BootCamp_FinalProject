@@ -11,6 +11,37 @@ import {environment} from '../../../environment/environment';
 export class UserService {
   constructor(private http: HttpClient ) { }
 
+  private userData: any;
+
+  setUserData(data: User) {
+    this.userData = data;
+  }
+
+  getUserData() {
+    return this.userData;
+  }
+
+  EditUser = (user: User) => {
+    const body = {
+      id: this.userData.id,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      nationalCode: user.nationalCode,
+      phoneNumber: user.phoneNumber,
+      username: this.userData.username,
+      password: user.password,
+      role: user.role,
+    }
+    const token = localStorage.getItem('authToken');
+    return this.http.put("http://localhost:3000/api/users", body,
+      { headers: {authorization: token!},responseType: "text" })
+      .subscribe({
+        error: (err) => {
+          console.error("Error editing user:", err);
+        }
+      });
+  }
+
   GetAllUsers = (): Observable<any>  => {
     const token = localStorage.getItem('authToken');
     return this.http.get("http://localhost:3000/api/users",
@@ -30,17 +61,9 @@ export class UserService {
   // }
 
   AddUser = (user: User) => {
-    console.log(user);
     const token = localStorage.getItem('authToken');
-    const headers = {
-      authorization: token!
-    };
-    console.log(headers);
-    return this.http.post("http://localhost:3000/api/users", user, { headers: headers, responseType: "text" })
+    return this.http.post("http://localhost:3000/api/users", user, { headers: {authorization: token!}, responseType: "text" })
       .subscribe({
-        next: (response) => {
-          console.log("User added successfully:", response);
-        },
         error: (err) => {
           console.error("Error adding user:", err);
         }

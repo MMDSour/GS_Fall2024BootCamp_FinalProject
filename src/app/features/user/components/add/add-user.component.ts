@@ -17,7 +17,6 @@ export class AddUserComponent {
   constructor(public userService: UserService) {}
 
   addUser = (e: any) => {
-    console.log(e);
     if (e.role === 'user')
       e.role = userRole.USER;
     else if (e.role === 'admin')
