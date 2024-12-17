@@ -1,0 +1,3 @@
+<table-component [data]="products" [headers]="productHeaders"
+                 (deleteRow)="deleteProduct($event)"
+                 [editNav]="'/user/edit/'" (saveRow)="this.productService.setProductData($event)"/>
