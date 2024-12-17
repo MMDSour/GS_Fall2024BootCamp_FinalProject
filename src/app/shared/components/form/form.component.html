@@ -49,20 +49,17 @@
         @else if(getControl(field.key).hasError('pattern')){
          <span>{{ field.validations?.errorMessage }}</span>
         }
-        @else if(getControl(field.key)?.hasError('phoneNumber')){
+        @else if(getControl(field.key).hasError('phoneNumber')){
           <span>{{ field.validations?.errorMessage }}</span>
         }
-        @else if(getControl(field.key)?.hasError('exactLength')){
+        @else if(getControl(field.key).hasError('exactLength')){
           <span>{{ field.validations?.errorMessage }}</span>
         }
-        @else if (getControl(field.key)?.hasError('symbol')){
+        @else if (getControl(field.key).hasError('symbol')){
           <span>{{ getControl(field.key).errors?.['symbol'] + field.key }}</span>
         }
-        @else if (getControl(field.key)?.hasError('noWhiteSpace')){
+        @else if (getControl(field.key).hasError('noWhiteSpace')){
           <span>{{ getControl(field.key).errors?.['noWhiteSpace'] }}</span>
-        }
-        @else if (getControl(field.key)?.hasError('noNumber')){
-          <span>{{ getControl(field.key).errors?.['noNumber'] }}</span>
         }
       </div>
     }
